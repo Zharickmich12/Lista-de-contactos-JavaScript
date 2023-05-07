@@ -21,6 +21,7 @@ const cargarContactos = (local, parentNode) =>{
 const crearContacto = (parentNode, contacto, local) =>{
 
     let divContacto = document.createElement('div')
+    let idContacto = document.createElement('h3')
     let nombreContacto = document.createElement('h3')
     let apellidoContacto = document.createElement('h3')
     let numeroContacto = document.createElement('h3')
@@ -28,6 +29,7 @@ const crearContacto = (parentNode, contacto, local) =>{
     let ciudadContacto = document.createElement('h3')
     let iconoBorrar = document.createElement('span')
 
+    idContacto.innerHTML = contacto.id
     nombreContacto.innerHTML = contacto.nombre
     apellidoContacto.innerHTML = contacto.apellido
     numeroContacto.innerHTML = contacto.numero
@@ -43,6 +45,7 @@ const crearContacto = (parentNode, contacto, local) =>{
         location.reload();
     }
 
+    divContacto.appendChild(idContacto)
     divContacto.appendChild(nombreContacto)
     divContacto.appendChild(apellidoContacto)
     divContacto.appendChild(numeroContacto)
