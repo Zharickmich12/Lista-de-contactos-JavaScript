@@ -82,7 +82,12 @@ body{
     height: 4rem;
 }
 
-.icono{
+#edit{
+    color: white;
+    cursor: pointer;
+}
+
+#delete{
     color: tomato;
     cursor: pointer;
 }
