@@ -1,22 +1,60 @@
 let listaContactos = [
-  "Zharick Huertas",
-  "Joel Pimentel",
-  "Andy Fetecua",
-  "Matteo Lopez"
+  {
+    id: 1,
+    nombres: "Zharick",
+    apellidos: "Huertas",
+    telefono: "555-1234",
+    ubicaciones: "Colombia",
+    ciudad: "Bogota",
+    direccion: "kr 3 21-12"
+  },
+  {
+    id: 2,
+    nombres: "Andy",
+    apellidos: "Lopez",
+    telefono: "555-5678",
+    ubicaciones: "Colombia",
+    ciudad: "Bogota",
+    direccion: "kr 3 21-12"
+  }
 ];
 
 function agregarContacto() {
-  const nombreApellido = document.getElementById("nombreApellido").value;
-  if (nombreApellido.trim() !== "") {
-    listaContactos.push(nombreApellido);
+  const nombres = document.getElementById("nombres").value;
+  const apellidos = document.getElementById("apellidos").value;
+  const telefono = document.getElementById("telefono").value;
+  const ubicaciones = document.getElementById("ubicaciones").value;
+  const ciudad = document.getElementById("ciudad").value;
+  const direccion = document.getElementById("direccion").value;
+
+  if (nombres.trim() !== "" && apellidos.trim() !== "") {
+    const nuevoContacto = {
+      id: listaContactos.length + 1,
+      nombres: nombres,
+      apellidos: apellidos,
+      telefono: telefono,
+      ubicaciones: ubicaciones,
+      ciudad: ciudad,
+      direccion: direccion
+    };
+    listaContactos.push(nuevoContacto);
     actualizarListaContactos();
-    document.getElementById("nombreApellido").value = "";
+    resetForm();
   }
 }
 
-function borrarContacto(index) {
-  listaContactos.splice(index, 1);
+function borrarContacto(id) {
+  listaContactos = listaContactos.filter(contacto => contacto.id !== id);
   actualizarListaContactos();
+}
+
+function resetForm() {
+  document.getElementById("nombres").value = "";
+  document.getElementById("apellidos").value = "";
+  document.getElementById("telefono").value = "";
+  document.getElementById("ubicaciones").value = "";
+  document.getElementById("ciudad").value = "";
+  document.getElementById("direccion").value = "";
 }
 
 function imprimirContactos() {
@@ -28,12 +66,14 @@ function actualizarListaContactos() {
   const contactList = document.getElementById("contactList");
   contactList.innerHTML = "";
 
-  listaContactos.forEach((contacto, index) => {
+  listaContactos.forEach(contacto => {
     const contactItem = document.createElement("div");
     contactItem.classList.add("contact-item");
     contactItem.innerHTML = `
-      <span>${contacto}</span>
-      <button onclick="borrarContacto(${index})"><span class="material-symbols-outlined">delete</span></button>
+      <span>${contacto.nombres} ${contacto.apellidos}</span>
+      <button onclick="borrarContacto(${contacto.id})"><span class="material-symbols-outlined">
+      delete
+      </span></button>
     `;
     contactList.appendChild(contactItem);
   });
