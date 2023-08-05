@@ -1,8 +1,8 @@
 let listaContactos = [
   {
     id: 1,
-    nombres: "Zharick",
-    apellidos: "Huertas",
+    nombres: "Carlos",
+    apellidos: "Sanchez",
     telefono: "555-1234",
     ubicaciones: "Colombia",
     ciudad: "Bogota",
@@ -10,7 +10,7 @@ let listaContactos = [
   },
   {
     id: 2,
-    nombres: "Andy",
+    nombres: "Andres",
     apellidos: "Lopez",
     telefono: "555-5678",
     ubicaciones: "Colombia",
